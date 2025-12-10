@@ -1,0 +1,15 @@
+{
+    "name": "mariiademchuck/lab-8",
+    "autoload": {
+        "psr-4": {
+            "Mariiademchuck\\Lab8\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lemonchek",
+            "email": "mariademchuk40@gmail.com"
+        }
+    ],
+    "require": {}
+}
