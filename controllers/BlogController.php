@@ -27,4 +27,50 @@ class BlogController
 
         include 'views/postsView.php';
     }
+
+    public function createPost()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $title = trim($_POST['title']);
+        $content = trim($_POST['content']);
+
+        if ($title !== '' && $content !== '') {
+            Post::create($title, $content);
+        }
+
+        header('Location: index.php');
+        exit;
+    }
+
+    include 'views/createPost.php';
+}
+
+public function editPost()
+{
+    $id = (int)($_GET['id'] ?? 0);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $title = trim($_POST['title']);
+        $content = trim($_POST['content']);
+
+        Post::update($id, $title, $content);
+
+        header('Location: index.php');
+        exit;
+    }
+
+    $post = Post::find($id);
+    include 'views/editPost.php';
+}
+
+public function deletePost()
+{
+    $id = (int)($_GET['id'] ?? 0);
+    Post::delete($id);
+
+    header('Location: index.php');
+    exit;
+}
+
+
 }
